@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test3_javascript/test01_引入外部js.html</title>
+    <script src="./js/testjs.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        console.log("内部js");
+
+        console.log("内部jssss");
+    </script>
+
+
+</head>
+<body>
+
+    <!-- onclick里面写的就是点击之后要执行的操作 -->
+    <button type="button" onclick="alert('click')">test</button>
+    <button type="button" onclick="console.log('onclick')">22test</button>
+    
+    <!-- 当一个链接要执行一段javascript代码时，就可以在href里面写js代码 -->
+    <a href="javascript:alert('click2')">test2</a>
+    <a href="javascript:;">test3</a>
+    <a href="./js/testjs.js">test333</a>
+    
+</body>
+</html>
