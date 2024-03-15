@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 
+         第二种方式（内部样式表）
+            - 将样式编写到head中的style标签里
+                然后通过CSS的选择器来选中元素并为其设置各种样式
+                可以同时为多个标签设置样式，并且修改时只需要修改一处即可全部应用
+     -->
+    <style>
+        p {
+            color: blue;
+            font-size: 50px;
+        }
+
+        h1 {
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+    <p>我是一个p标签</p>
+
+    <p style="background-color: aqua; color: yellow;">我是一个p标签2</p>
+
+    <h1>我是什么颜色</h1>
+    
+</body>
+</html>

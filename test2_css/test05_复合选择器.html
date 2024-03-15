@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test2_css/test05_复合选择器.html</title>
+
+    <style>
+        /* 将class为red的div字体大小设置为30px */
+        /* 
+            交集选择器
+                作用：选中同时复合多个条件的元素
+                语法：选择器1选择器2选择器3选择器n{}
+                注意点：
+                    交集选择器中如果有元素选择器，必须使用元素选择器开头
+        */
+
+        div.red {
+            color: red;
+        }
+        div.red#size {
+            color: red;
+            font-size: 30px;
+        }
+        div#yellow {
+            color: yellow;
+        }
+
+
+        /*
+        选择器分组（并集选择器）
+            作用：同时选择多个选择器对应的元素，这些选择器将拥有相同的样式属性
+            语法：选择器1,选择器2,选择器3,选择器n{}
+
+            #b1,.p1,h1,span,div.red{}
+        */
+        .d1, .d2, .d3 {
+            color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="red">我是一个div red</div>
+    <div class="red" id="size">我是一个div red size</div>
+    <div id="yellow">我是一个div yellow</div>
+
+
+    <div class="d1">d111</div>
+    <div class="d2">d222</div>
+    <div class="d3">d333</div>
+
+</body>
+</html>

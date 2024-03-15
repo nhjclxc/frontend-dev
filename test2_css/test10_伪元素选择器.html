@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test2_css/test10_伪元素选择器.html</title>
+    <style>
+       /* 
+        伪元素，表示页面中一些特殊的并不真实的存在的元素（特殊的位置）
+            伪元素使用 :: 开头
+            ::first-letter 表示第一个字母
+            ::first-line 表示第一行
+            ::selection 表示选中的内容
+            ::before 元素的开始 
+            ::after 元素的最后
+                - before 和 after 必须结合content属性来使用
+        */
+        ::first-letter{
+            color: blue;
+        }
+
+        ::first-line{
+            color: yellow;
+        }
+
+        ::selection{
+            color: red;
+        }
+        
+        /* 指定某个元素的伪元素 */
+        div::before{
+            content: 'abc';
+            color: rgb(0, 255, 0);
+        }
+
+        div::after{
+            content: 'aaa';
+            color: red;
+        }
+
+        div::before{
+            content: '『';
+         }
+        div::after{
+            content: '』';
+        }
+    </style>
+</head>
+<body>
+    <p>前端基础课程已更，更新更实战，一套入行：BV1p84y1P7Z5（记得三连呀）
+        教程涵盖了HTML、CSS、HTML5和CSS3的核心技术点。通过学习可以帮助初学者快速上手，并完成大部分静态网页的开发。</p>
+    <div>qaz你是谁aaa</div>
+    <div>abc 你是谁aaa</div>
+        <div>那些说下载慢的，请访问这个网站：
+        https://www.jianshu.com/p/598f18ca6963
+        你会收获满满
+        下载CSS： http://tokyo.kapeli.com/feeds/CSS.tgz
+        下载HTML： http://tokyo.kapeli.com/feeds/HTML.tgz
+        下载JavaScript： http://tokyo.kapeli.com/feeds/JavaScript.tgz
+        下载PHP： http://tokyo.kapeli.com/feeds/PHP.tgz
+        http://tokyo.kapeli.com/feeds/{名字}.tgz
+        把{名字}换成你要下载的语言</div>
+</body>
+</html>

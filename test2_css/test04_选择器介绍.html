@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test2_css/test04_选择器介绍.html</title>
+
+    <!-- 
+        1、元素选择器：
+            根据标签名来选择元素
+            用法：标签 { ... }
+                p {}  div{}
+        
+        2、id选择器
+            作用：根据元素的id属性值选中一个元素
+            语法：#id属性值{ ... }
+            例子：#box{} #red{}  
+
+        3、类选择器
+            作用：根据元素的class属性值选中一组元素
+            语法：.className { ... }
+            例子：.className{ ... } 
+
+        4、通配选择器
+            作用：选中页面中的所有元素
+            语法: * { ... }
+     -->
+
+     <style>
+        h1 {
+            color: red;
+        }
+        
+        #p1id {
+            color: blue;
+        }
+        #p2id {
+            font-weight: bold;
+        }
+
+        .p1class {
+            color: chocolate;
+        }
+
+        .p2class {
+            font-weight: bold;
+        }
+
+        * {
+            font-size: 25px;
+        }
+
+        /* 嵌套选择器 */
+        /* https://blog.csdn.net/WuLex/article/details/100736978 */
+            
+        /* 类nav下的类user选择器 */
+        /* .nav .user之间有空格，匹配到nav下的user */
+        .nav .user{
+            float: left;
+            color: yellow;
+        }
+        
+        /* .nav2.user2之间没有空格，匹配到同时含有nav2和user2的类 */
+        .nav2.user2{
+            float: right;
+            color: blue;
+        }
+
+
+        /* css预处理器：css允许对样式进行变量声明 */
+
+        /* $color: red;
+        $font-size: 16px;
+        $background-color: yellow;
+
+        #element1, #element2, #element3 {
+            color: $color;
+            font-size: $font-size;
+            background-color: $background-color;
+        } */
+
+     </style>
+
+</head>
+<body>
+    
+
+    <h1>我是标题</h1>
+    <p id="p1id">少小离家老大回</p>
+    <!-- id只能有一个但是类可以有多个，中间使用空格 隔开 -->
+    <p class="p1class p2class">乡音无改鬓毛衰</p>
+    <p class="p2class">儿童相见不相识</p>
+    <p>笑问客从何处来</p>
+    <div class="nav">
+        <span class="user">我是谁</span>
+    </div>
+    <div class="nav2 user2">我是一只小小鸟</div>
+    <div class="user2">我是一只小小鸟user2</div>
+
+
+
+
+
+</body>
+</html>
