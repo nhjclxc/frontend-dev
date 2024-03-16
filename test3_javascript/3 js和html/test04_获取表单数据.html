@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript">
+        window.onload = function(){
+            var btn = document.getElementById("submit");
+            btn.onclick = function(){
+
+                // var inputBoxs = document.getElementsByName('inputBox')
+                // console.log(inputBox)
+                // var inputBox = inputBoxs[0]
+                // console.log(inputBox)
+                // console.log(inputBox.value)
+
+                var test = document.getElementById('test')
+                // console.log(test)
+                var val = new Date()
+                test.value = val
+                console.log(test.value)
+                
+
+                var ul = document.getElementById('ul')
+                console.log(ul)
+                var li = document.createElement('li');
+                var text = document.createTextNode(val);
+                li.appendChild(text)
+                ul.appendChild(li)
+
+
+            }
+
+        }
+    </script>
+
+
+</head>
+<body>
+
+    <!-- <input type="text" name="inputBox" value="" /> -->
+    <input type="text" name="inputBox" id="test" value="" />
+    <button id="submit">submit</button>
+
+    <ul id="ul">
+        <li>li1</li>
+        <li>li2</li>
+        <li>li3</li>
+    </ul>
+    
+</body>
+</html>

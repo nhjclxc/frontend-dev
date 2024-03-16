@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        
+        #box1{
+            width: 12.5rem;
+            height: 12.5rem;
+            background-color: #FFFF00;
+        }
+    </style>
+
+    <script type="text/javascript">
+        // 事件的绑定
+        window.onload = function(e){
+            console.log(e)
+            console.log(e.isTrusted)
+
+            var btn01 =document.getElementById("btn01");
+	        var btn02 =document.getElementById("btn02");
+
+            // btn02.onclick、btn02.ondbclick这样只能为一个按钮添加一个事件
+            // 现在如果想要同一个事件做多件事情这样是难以实现的
+            // 那么就要通过事件监听来实现
+
+            // addEventListener(原来的字符串不要on,回调函数,是否在捕获阶段触发事件一般都传false)也可以绑定响应函数
+	        // addEventListener()可同时绑定多个响应函数，事件触发时会根据函数绑定顺序执行
+            btn02.addEventListener('click', function(){
+                console.log('e1');
+            }, false)
+            btn02.addEventListener('click', function(){
+                console.log('e2');
+            }, false)
+
+    // 事件的传播：
+        // 1.捕获阶段：从祖先元素向目标元素进行事件的捕获，但是默认此时不会触发事件 
+        // 2.目标阶段：事件捕获到目标元素，捕获结束在目标元素上触发事件 
+        // 3.冒泡阶段：事件从目标元素向祖先元素传递，依次触发祖先元素上的事件
+	// 如果希望在捕获阶段就触发事件，可以将addEventListener第三个参数改成true,一般情况下不会希望在捕获阶段执行事件
+	
+
+    // 滚轮向下滚动，box1边长，向上滚动box1变短
+    var box1 = document.getElementById("box1")
+	// onmousewheel鼠标滚轮滚动事件
+	box1.onwheel = function(e){
+		// 获取滚轮滚动方向
+		// 这个值不看大小只看正负
+		console.log(e.wheelDelta)
+		if(e.wheelDelta > 0)
+			// alert("向上")
+			box1.style.height = (box1.clientHeight - 10)+"px"
+		else
+			// alert("向下")
+			box1.style.height = (box1.clientHeight + 10)+"px"
+		// 禁用浏览器滚动条
+		return false;
+	} 
+
+
+
+    // 键盘事件
+	// onkeydown按键被按下，如果一直按着不松手事件会一直触发
+	// onkeyup按键被松开
+	// 详见https://www.runoob.com/jsref/dom-obj-event.html
+	// 键盘事件一般都绑定给一些可获取焦点的对象或者是document
+	document.onkeydown = function(e){
+		console.log("按下键盘")
+		console.log(e.keyCode)
+		// 判断alt和a是否同时按下
+		if(e.altKey && e.keyCode == 66)
+			console.log("同时按下")
+	}
+	var input = document.getElementById("input")
+	// 在文本框中输入内容是onkeydown默认行为
+	input.onkeydown = function(e){
+		// 使文本框中不能输入数字
+		if(e.keyCode >= 65 && e.keyCode <= 93)
+			// 禁用默认行为 
+			return false;
+	}
+	input.onkeyup = function(e){
+		// 按下回车
+		if(e.keyCode == 13)
+			alert(input.value)
+	}
+
+        }
+    </script>
+
+
+</head>
+<body>
+		<button type="button" id="btn01">点我一下</button>
+		<button type="button" id="btn02">点我一下</button>
+    
+		<div id="box1"></div>
+
+        
+		<input type="text" id="input" value="" />
+</body>
+</html>

@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<script src="js/tools.js"></script>
 	</head>
 	<body style="height: 1000px;width: 2000px;">
 		<div id="box1">
@@ -11,6 +12,8 @@
 	</body>
 </html>
 <script type="text/javascript">
+	var div = document.getElementById("box1");
+
 	// 使div跟随鼠标移动
 	document.onmousemove = function(e){
 		// clientX和clientY获取鼠标当前可见窗口坐标
@@ -19,12 +22,25 @@
 		var left = e.pageX;
 		var top = e.pageY;
 		// 设置div偏移量
-		box1.style.left = left+"px";
-		box1.style.top = top+"px";
+		div.style.left = left+"px";
+		div.style.top = top+"px";
 	}
+	// 鼠标进入屏幕后div出现
+	document.onmouseenter = function(e) {
+		addClass(div, 'in')
+		console.log("enter")
+	}
+	
+	// 鼠标移除屏幕后div消失
+	document.onmouseout = function(e) {
+		removeClass(div, 'in')
+		console.log("out")
+	}
+
+
 </script>
 <style type="text/css">
-	#box1{
+	.in {
 		width: 3.125rem;
 		height: 3.125rem;
 		border-radius: 1.5625rem;

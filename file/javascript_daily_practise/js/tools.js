@@ -41,7 +41,8 @@
 	// obj添加class的元素
 	// cn添加的class值
 	function addClass(obj,cn){
-		obj.className +=" "+cn
+		if(!hasClass(obj,cn))
+			obj.className +=" "+cn
 	}
 	// 判断元素中是否含有指定的class属性值
 	function hasClass(obj,cn){
@@ -57,7 +58,7 @@
 		// return flag
 		// 使用正则表达式
 		var reg = new RegExp("\\b"+cn+"\\b") 
-		console.log(reg.test(obj.className))
+		// console.log(reg.test(obj.className))
 		return reg.test(obj.className)
 	}
 	
@@ -65,9 +66,9 @@
 	function removeClass(obj,cn){
 		var reg = new RegExp("\\b"+cn+"\\b")
 		// console.log(obj.className.replace(reg , ""))
-		console.log(obj.className)
+		// console.log(obj.className)
 		obj.className = obj.className.replace(reg , "")
-		console.log(obj.className)
+		// console.log(obj.className)
 	}
 	
 	// toggleClass切换一个类，有则删除，无则添加

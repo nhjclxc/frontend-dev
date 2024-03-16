@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>test3_javascript/js/test01_dom.html</title>
+	</head>
+	<body>
+		<button id = "btn">我是一个按钮</button>
+
+		<!-- dom事件详见https://www.runoob.com/js/js-htmldom-events.html -->
+		<!-- 结构和行为耦合，不推荐使用 -->
+		<button id="btn1" onclick="alert('test1')">按钮</button>
+		<button id="btn2" ondblclick="alert('test2')">按钮2</button>
+		<button id="btn3" onmousemove="alert('test3')">按钮3</button>
+		<button id="btn4">按钮4</button>
+		
+		<button type="button" id="btn">btn</button>
+
+		<script type="text/javascript">
+			// dom全称document object model文档对象模型
+			// document文档表示整个html文档
+			// object对象表示将网页中每个部分都转换成一个对象
+			// model通过模型表示对象间的关系，dom树详见https://www.runoob.com/dom/dom-nodetree.html
+					
+			// node 节点，是构成网页的基本组成部分每一部分被称为一个节点
+			<!-- <p id = "pid">text</p> -->
+			// 整个html文档称为文档节点 nodeTyp:9 nodeValue:null
+			// html文档中的html标签被称为元素节点<p> nodeType:1 nodeValue:null
+			// 属性被称为属性节点 id = "pid" nodeType:2 nodeValue:pid
+			// 文本内容被称为文本节点text nodeType:3 nodeValue:text
+					
+			// 浏览器已经提供了文档节点对象，这个对象是window属性
+			console.log(document);
+			// 获取到button对象
+			var btn = document.getElementById("btn");
+			console.log(btn);
+			// 修改按钮的文字
+			console.log(btn.innerHTML);
+			btn.innerHTML = "按钮";
+			console.log(btn.innerHTML);
+
+
+	// 事件：用户和浏览器之间的交互行为
+	// 可以为按钮对应事件绑定处理函数响应事件
+	var btn = document.getElementById("btn4")
+	btn.onclick = function(){
+		alert("test4")
+	}
+	btn.ondblclick = function(){
+		alert("test4test4")
+	}
+
+			
+			// 浏览器加载界面时，是按照自上而下的顺序是加载的
+			// 此处代码执行时，页面还没有加载,dom对象也没有加载，因此无法获取
+			var btn = document.getElementById("btn")
+			console.log(btn)
+			// 因此将js代码编写到页面下部就是为了在页面加载完毕后执行js代码
+			// onload会在整个页面加载完成后触发
+			window.onload = function(){
+				var btn = document.getElementById("btn")
+				console.log(btn)
+			}
+
+		</script>
+	
+	</body>
+</html>
