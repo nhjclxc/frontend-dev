@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript">
+        // 基本数据类型都是单一值，值和值之间没有联系
+        // 对象属于复合数据类型
+        // 内建对象：ES标准定义的对象，在任何的ES实现中都可以使用
+        // Math,String,Number,Boolean,Function,Object...
+        // 宿主对象：js运行环境提供的对象，主要指浏览器提供的对象
+        // DOM,BOM
+        // 自定义对象
+        
+        var obj = new Object();
+        // 对象名.属性名=属性值
+        obj.name = "对象"
+        obj.gender = "男"
+        obj.age = 18
+        console.log(obj)
+        console.log(obj.age);
+        // 读取变量中没有的属性会返回undefined
+        console.log(obj.age2);
+        // 删除对象的属性
+        console.log(obj.name)
+        delete obj.name;
+        console.log(obj.name)
+        // 对象属性名不强制要求遵守标识符规范
+        obj.var = "aaa"
+        // 如果采用特殊属性名，需要采用：对象["属性名"]=属性值
+        obj["123"]=789;
+        console.log(obj["123"])
+        // 可以在[]中传递变量
+        var n = "123";
+        console.log(obj[n])
+        // js的属性值可以是任意类型的数据
+        obj.test = true;
+        obj.test = null;
+        obj.test = undefined;
+        obj.test=obj;
+        console.log(obj.test)
+        // in运算符检查一个对象中是否含有指定的属性
+        // "属性名" in 对象
+        console.log("test" in obj)
+
+
+        let ob = new Object();
+        ob.name = '张三';
+        console.log(ob)
+        console.log(ob.name)
+        console.log(ob.sex)
+
+        let ob2 = ob;
+        ob.name = '里斯';
+        console.log(ob)
+        console.log(ob == ob2)
+        console.log(ob === ob2)
+        console.log(Object.is(ob, ob2))
+
+        let ob3 = new Object();
+        ob3.name = '里斯';
+        console.log(Object.is(ob3, ob2))
+
+
+
+        
+		// 使用对象字面量创建一个对象
+        obj2 = {
+            obj: ob,
+            addr: "宁波市",
+            'age': 666,
+            "info":{
+                info1:"a",
+                info2:"b"
+            }
+        }
+        console.log(obj2)
+
+
+// 函数也可以作为对象的属性，我们称为这个对象的方法
+var obj = new Object();
+			obj.name = function(){
+				console.log("hello")
+			}
+			// 调用方法
+			obj.name();
+			// console.log()，document.write()等都是调用方法
+			
+			var obj2 = {
+				name:"123",
+				age:10,
+				sayname: function(){
+					console.log(obj2.name)
+				}
+			}
+			
+			obj2.sayname();
+			// 枚举对象中的属性
+			// 每次执行会将属性名赋值给变量
+			for(var temp in obj2){
+				console.log(temp)
+				// 访问属性值
+				console.log(obj2[temp])
+			}
+
+            var objc = new Object();
+
+            objc.name = '测试对象方法';
+
+            objc.doSomeThing = function(){
+                console.log('say hello')
+            }
+            console.log(objc)
+            objc.doSomeThing()
+
+            for (var o in objc){
+                // 输出每一个属性
+                console.log(o)
+                // 访问属性对应的数据
+                console.log('值：' + objc[o])
+            }
+
+// 创建一个构造函数，创建方式和普通函数没有区别
+			// 构造函数执行流程：
+				// 1，创建一个新对象
+				// 2，将新建的对象设置为函数中this
+				// 3，逐行执行函数中的代码
+				// 4，将新建对象作为返回值返回
+			// 使用同一个构造函数创建对象称为一类对象，使用该构造函数创建的对象称为实例
+			function Person(name,age,gender){
+				this.name = name;
+				this.age = age;
+				this.gender = gender;
+				// 为提高性能可将函数写在全局作用域中
+				this.sayhello = fun;
+			}
+			// 定义在全局作用域中污染了全局作用域的命名空间，此时可使用原型prototype实现
+			function fun(){
+				alert(this);
+			}
+			var per = new Person("张三",16,1);
+            // per.sayhello()
+			console.log(per)
+			// 检查一个对象是否是一个类的实例
+			console.log(per instanceof Person)
+			// 所有对象都是Object子类
+			console.log(per instanceof Object)
+			console.log(666)
+
+
+
+            // 我们创建的每一个函数解析器都会像函数中添加一个属性prototype,这个属性对应着原型对象
+			// 如果函数作为普通函数调用prototype没有任何作用，当函数作为构造函数调用时，所创建的对象中都会有一个隐含的属性指向该构造函数的原型对象，可以通过 _proto_ 访问该属性
+			console.log(Person.prototype)
+			var per = new Person();
+			console.log(per.__proto__ == Person.prototype)
+			// 原型对象就相当于一个公共的区域，所有同一个类的实例都可以访问到这个原型对象
+			// 可将对象中共有的内容统一设置到原型对象中
+			// 向原型对象中添加属性a
+			Person.prototype.a = 123;
+			console.log(per.a)
+			console.log("a" in per)
+			console.log(per.hasOwnProperty("a"))
+			// 当访问对象的一个属性或方法时，他会在对象自身中寻找，如果找到则直接使用，未找到则进入原型对象中寻找
+			per.a = 456;
+			console.log(per.a)
+			console.log(per.aaaaa)
+			// 以后创建构造函数时，可以将这些对象的共有属性和方法同意添加到构造函数的原型对象中
+			
+			// 原型对象也是对象，所以他也有原型
+			// Object是祖先
+			console.log(per.__proto__.__proto__.hasOwnProperty("hasOwnProperty"))
+			
+    </script> 
+
+
+</head>
+<body>
+    
+</body>
+</html>

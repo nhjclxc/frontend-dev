@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript">
+
+        // array数组方法详见https://www.runoob.com/jsref/jsref-obj-array.html,重要,需要熟练掌握
+        var arr = [1,2,3,];
+        console.log(arr);
+        // push 尾部添加
+        var res = arr.push('a', "asdf");
+        console.log(res); // 经过push操作后的数组长度
+        console.log(arr);
+
+        // pop 尾部移除
+        var res = arr.pop()
+        console.log(res); 
+        console.log(arr);
+        console.log(arr.pop());
+        console.log(arr);
+
+        // unshift 头部插入
+        var res = arr.unshift('aaa');
+        console.log(res); 
+        console.log(arr);
+        
+        // shift  头部移除
+        var res = arr.shift()
+        console.log(res); 
+        console.log(arr);
+        
+        // 数组遍历
+        // foreach
+        // 第一个参数是当前正在遍历的元素value,
+        // 第二个参数是当前正在遍历的元素索引index，
+        // 第三个参数是正在遍历的数组arrObj
+        arr.forEach(function (value,index,arrObj){
+            console.log(value);
+            console.log(index);
+            console.log(arrObj);
+        })
+
+        //slice()
+        // 截取开始位置的索引，包含开始索引
+        // 截取结束位置的索引，不包含结束索引,
+        // 第二个参数省略，截取开始索引往后所有元素
+        arr.push(4,5,6,7)
+        var res = arr.slice(1,3)
+        console.log(res); 
+        console.log(arr);
+        var res = arr.slice(5)
+        console.log(res); 
+        console.log(arr);
+
+        // 索引可以是负值，表示从后往前计算，从后往前截取
+        var res = arr.slice(-5,-2)
+        console.log(res); 
+        console.log(arr);
+        var res = arr.slice(-5)
+        console.log(res); 
+        console.log(arr);
+        
+        console.log("splice")
+        // splice()
+        // 删除数组中指定元素
+        // 第一个参数表示开始位置的索引，
+        // 第二个参数表示删除元素的数量,
+        // 第三个及以后传递新元素，将自动插入到开始位置索引前面
+        var res = arr.splice(1)
+        console.log(res); 
+        console.log("-----")
+        console.log(arr);
+        console.log("-----")
+        arr.push(2,3,4,5,6,7)
+        var res = arr.splice(1,3)
+        console.log(res); 
+        console.log(arr);
+        var res = arr.splice(1,3,666,777,888,999)
+        console.log(res); 
+        console.log(arr);
+
+        // concat()
+        // 不会对原数组产生影响
+        arr1 = [1,2,3]
+        arr2 = ['a','b','c']
+        
+        console.log(arr1.concat(arr2))
+        
+        // join()
+        // 默认逗号，可修改连接符
+        console.log(arr1.join(arr2))
+        console.log(arr2.join(arr1))
+        console.log(['aa','bb','cc'].join("--"))
+        
+        // reverse()
+        // 会对原数组产生影响
+        arr = ['a','b','c','d','e','f']
+        console.log(arr)
+        arr2 = arr.reverse()
+        console.log(arr)
+        console.log(arr2)
+        
+        var arrc = [66,33,2,18,5,19]
+        // sort()
+        // 会对原数组产生影响，默认按照unicode编码排序，因此对数字排序会得出错误结果
+        arrc.sort();
+        console.log(arrc) // [18, 19, 2, 33, 5, 66]，会按第一位进行排序
+
+
+        // 可以在sort()添加一个回调函数，来指定排序规则
+        // a下标一定在b前面
+        var arrc = [66,33,2,18,5,19]
+        var arrb = arrc.sort(function(a,b){
+            return a-b
+        })
+        // 浏览器会根据sort函数回调的返回值决定顺序,若返回大于0的值，则元素交换位置,返回小于0的值则不换位置，等于0则相等
+        console.log(arrc)
+        console.log(arrb)
+
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

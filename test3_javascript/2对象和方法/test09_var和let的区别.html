@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+
+        function add(a, b){
+            a = +a
+            b = +b
+            return a+b;
+        }
+        console.log(add(1,2))
+        console.log(add(1,'-2'))
+
+        // var是函数作用域，let是块作用域。
+            // 在函数中声明了var，整个函数内都是有效的，比如说在for循环内定义的一个var变量，实际上其在for循环以外也是可以访问的
+            // 而let由于是块作用域，所以如果在块作用域内定义的变量，比如说在for循环内，在其外面是不可被访问的，所以for循环推荐用let
+         
+
+            for (let index = 0; index < 10; index++) {
+                console.log(index)
+            }
+            // Uncaught ReferenceError: index is not defined
+            // console.log(index)
+
+            for (var i = 0; i < 10; i++) {
+                console.log(i)
+            }
+            console.log(i) // 输出10
+
+            // let不能在定义之前访问该变量，但是var可以。
+            // Uncaught ReferenceError: Cannot access 'aa' before initialization
+            // console.log(aa)
+            let aa = 66
+            console.log(bb) // undefined
+            var bb = 66
+
+            // let不能被重新定义，但是var是可以的
+            let aaa = 666
+            // let aaa = 666 // Cannot redeclare block-scoped variable 'aaa'.javascript
+
+            var bbb = 999
+            var bbb = 999
+
+
+
+            
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

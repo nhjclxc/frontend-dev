@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<script type="text/javascript">
+    //Date对象用来表示一个时间 
+    // 如果直接使用构造函数创建一个Date对象，会封装为当前代码执行时间
+    var d = new Date();
+    console.log(d)
+    // 日期格式 月/日/年 时:分:秒
+    var d2 = new Date("1/1/2000 1:11:11")
+    console.log(d2)
+    var d2 = new Date("2024-03-16 21:11:11")
+    console.log(d2)
+
+
+    
+    // getTime()获取时间戳
+    var date = d2.getTime()
+    console.log(date)
+    // Date.now()获取当前时间戳
+    date = Date.now()
+    console.log(date)
+    // 更多Date对象方法信息详见https://www.runoob.com/jsref/jsref-obj-date.html
+		
+
+
+    // https://juejin.cn/post/7238199999732711481
+    
+    var date = new Date();
+    console.log(date.getFullYear()); //当前日期的年 2022
+    console.log(date.getMonth() + 1); //月份+1 由于月份是0-11计算 所以需要 +1 
+    console.log(date.getDate()); // 日
+    console.log(date.getDay()); // 星期几  注意：星期日返回的是0
+    console.log(date.getHours()); // 时
+    console.log(date.getMinutes()); // 分
+    console.log(date.getSeconds()); // 秒
+
+
+    let timer = new Date()
+    console.log(timer.toLocaleString()) // 日期+时间 2023/5/28 23:07:35
+    console.log(timer.toLocaleDateString()) // 日期 2023/5/28 
+    console.log(timer.toLocaleTimeString()) // 时间 23:10:31 
+
+    let time = new Date()
+    // 两个参数：（地区设置，日期时间格式和时区信息）
+    console.log(time.toLocaleString('en-US', { timeZone: 'America/New_York' }))
+    // 打印结果 5/28/2023, 11:08:39 AM
+
+
+    // 定义格式化封装函数
+    function formaData(timer) {
+        const year = timer.getFullYear()
+        const month = timer.getMonth() + 1 // 由于月份从0开始，因此需加1
+        const day = timer.getDate()
+        const hour = timer.getHours()
+        const minute = timer.getMinutes()
+        const second = timer.getSeconds()
+        return `${pad(year, 4)}-${pad(month)}-${pad(day)} ${pad(hour)}:${pad(minute)}:${pad(second)}`
+    }
+    // 定义具体处理标准
+    // timeEl 传递过来具体的数值：年月日时分秒
+    // total 字符串总长度 默认值为2
+    // str 补充元素 默认值为"0"
+    function pad(timeEl, total = 2, str = '0') {
+        return timeEl.toString().padStart(total, str)
+    }
+    // 调用函数
+    console.log(formaData(time)) // 2023-05-29 00:30:19
+
+
+    // npm install moment
+    //  import moment from 'moment';
+    // Vue.prototype.$moment = moment
+    // `this.$moment()` 输出当前时间的moment对象
+// console.log(this.$moment().format('YYYY-MM-DD HH:mm:ss')); // 2023-05-29 00:30:19
+
+
+
+    // Math和其它对象不同，不是构造函数,是工具类，封装了数学运算相关属性和方法
+    console.log(Math.PI)
+    console.log(Math.abs(-100))
+    console.log(Math.ceil(1.4))
+    console.log(Math.floor(1.4))
+    console.log(Math.round(1.4)) // 给定数字的值四舍五入到最接近的整数。
+    console.log(Math.round(1.6)) // 给定数字的值四舍五入到最接近的整数。
+    console.log(Math.random())
+    console.log(Math.round(Math.random()*10))
+    console.log(Math.max(40,20,15,50));
+    console.log(Math.min(40,20,15,50));
+    console.log(Math.pow(2,3));
+    console.log(Math.sqrt(16));
+    // Math详见https://www.runoob.com/jsref/jsref-obj-math.html
+	
+
+    console.log("字符串方法")
+     // string方法详见https://www.runoob.com/jsref/jsref-obj-string.html
+    // 创建一个字符串
+    var str = "hello world"
+    // 在底层是以字符数组的形式保存的
+    console.log(str.length)
+    console.log(str[0])
+    console.log(str.charAt(1));
+    console.log(str.charCodeAt(1));
+    console.log(String.fromCharCode(101));
+    console.log(str.concat(" goodbye"));
+    console.log(str.indexOf("h")) //有就返回对应的索引，没有就返回-1
+    console.log(str.indexOf("l"))
+    console.log(str.indexOf("z"))
+    // 第二个参数指定开始查找的位置
+    console.log(str.indexOf("l",3))
+    console.log(str.lastIndexOf("l"))
+    console.log(str.slice(1,5))
+    // dunstring不能接受负值
+    console.log(str.substring(1,2))
+    console.log(str.split(" "))
+		
+
+
+    var str = "1a2b3c4d5e"
+    // split()根据任意字母进行字符串拆分
+    // 即使不指定全局匹配也会全部拆分
+    var result = str.split(/[a-z]/)
+    console.log(result)
+    // search()搜索字符串中是否含有指定内容,可以接收正则表达式
+    var str2 = "hello aba hello aca"
+    result = str2.search(/a[bcde]a/)
+    console.log(result)
+    // match()根据正则表达式从一个字符串将符合条件的内容提取出来,返回数组
+    // 默认情况下match只会找到第一个符合要求的内容，可设置正则表达式为全局匹配模式
+    result = str2.match(/a[bcde]a/g)
+    console.log(result)
+    // replace()将字符串中指定内容替换为新内容
+    // 第一个参数被替换的内容，第二个参数新内容
+    result = str2.replace(/a[bcde]a/g,"newword")
+    console.log(result)
+
+</script>
+
+
+
+
+
+</head>
+<body>
+    
+</body>
+</html>
