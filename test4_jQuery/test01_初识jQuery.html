@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>01_初识jQuery</title>
+
+  <!--
+  方式一: 使用原生JS实现功能
+  -->
+  <script type="text/javascript">
+    window.onload = function(){
+      var btn1 = document.getElementById("btn1");
+      var username = document.getElementById("username");
+      btn1.addEventListener('click', function(){
+        console.log(username.value)
+      },false);
+    }
+    
+  </script>
+  <!--
+  方式二: 使用jQuery实现功能
+    1. 引入jQuery库
+      * 本地引入
+      * 远程引入
+    2. 使用jQuery函数和jQuery对象编码
+  -->
+  <script src="js/jquery-1.10.1.js"></script>
+
+  <script type="text/javascript">
+    // 绑定文档加载完成的监听
+    /*
+      $(function(){ }) 和 window.onload = function(){}等价
+    */
+    $(function(){
+      // 绑定按钮单击事件
+      // $('#btn2')和document.getElementById("btn1");等价
+      //.click(function(){})绑定单机监听事件
+      var $btn2 = $('#btn2')  // $btn2表示jQuery对象，前面加一个$
+      $btn2.click(function(){
+        // .val()和.value相同
+          var username = $('#username').val()
+          console.log(username)
+      })
+    })
+
+  </script>
+  
+</head>
+<body>
+<!--
+需求: 点击"确定"按钮, 提示输入的值
+-->
+
+用户名: <input type="text" id="username">
+<button id="btn1">确定(原生版)</button>
+<button id="btn2">确定(jQuery版)</button>
+</body>
+
+</html>
