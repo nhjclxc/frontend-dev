@@ -18,7 +18,11 @@ Ajax：https://www.bilibili.com/video/BV1WC4y1b78y/
 
 axios：https://www.bilibili.com/video/BV1wr4y1K7tq
 
+promise：https://www.bilibili.com/video/BV1GA411x7z1
+
 Bootstrap：https://www.bilibili.com/video/BV1YW411T7yy
+
+elementUI：
 
 nodejs：https://www.bilibili.com/video/BV1a34y167AZ
 
@@ -32,3 +36,4 @@ vant3：https://www.bilibili.com/video/BV1TU4y177UG
 
 Angular：https://www.bilibili.com/video/BV1bt411e71b
 
+项目实战：https://www.bilibili.com/video/BV1Vf4y1T7bw、https://www.bilibili.com/video/BV1x64y1S7S7

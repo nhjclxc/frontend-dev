@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test6_axios/test01_axios拦截器.html</title>
+    <script src="js/jquery-1.10.1.js"></script>
+    <script  src="https://cdn.bootcdn.net/ajax/libs/axios/1.5.0/axios.js"></script>
+</head>
+<body>
+    <button id="btn9000">点击向9000发送请求</button>
+    <button id="btn9999">点击向9999发送请求</button>
+
+    <!-- https://github.com/axios/axios -->
+    <!-- https://www.bootcdn.cn/axios/ -->
+
+    <script>
+        //获取button元素和div
+        var $btn9000 = $('#btn9000')
+        var $btn9999 = $('#btn9999')
+ 
+        // 创建多个axios示例的应用场景，一般是后端为微服务的情况
+        // user服务有一个地址，order服务有一个地址，goods服务有一个地址
+        // 那么有一个服务的api前缀都不相同，同时又想对每一个服务的api进行默认配置
+        // 这时候就可以使用create来创建多个axios的实列来区别
+
+        // axios9000可以认为是user服务
+        const axios9000 = axios.create({
+            baseURL: 'http://127.0.0.1:9000',
+            // ...
+        });
+ 
+        const axios9999 = axios.create({
+            baseURL: 'http://127.0.0.1:9999',
+            // ...
+        });
+
+        //绑定事件
+        $btn9000.click(function(){
+            var json = {name: '张三', age: 18 };
+            axios9000({
+                method: 'get',
+                url: '/get',
+                params: {
+                    name: '占山9000',
+                    age: 66
+                }
+            }).then(function (response) {
+                console.log(response);
+                console.log(response.data)
+            })
+            .catch(function (error) {
+                console.log(error);
+            }).finally(response => {
+                console.log('finally')
+            });
+        })
+        //绑定事件
+        $btn9999.click(function(){
+            var json = {name: '张三', age: 18 };
+            // axios9999使用create创建出来的axios实列
+            axios9999({
+                method: 'get',
+                url: '/get',
+                params: {
+                    name: '占山9999',
+                    age: 66
+                }
+            }).then(function (response) {
+                console.log(response);
+                console.log(response.data)
+            })
+            .catch(function (error) {
+                console.log(error);
+            }).finally(response => {
+                console.log('finally')
+            });
+        })
+
+    </script>
+</body>
+</html>

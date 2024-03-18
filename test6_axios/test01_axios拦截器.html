@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test6_axios/test01_axios拦截器.html</title>
+    <script src="js/jquery-1.10.1.js"></script>
+    <script  src="https://cdn.bootcdn.net/ajax/libs/axios/1.5.0/axios.js"></script>
+</head>
+<body>
+    <button id="btn">点击发送请求</button>
+
+    <!-- https://github.com/axios/axios -->
+    <!-- https://www.bootcdn.cn/axios/ -->
+
+    <script>
+        //获取button元素和div
+        var $btn = $('#btn')
+
+        // https://github.com/axios/axios?tab=readme-ov-file#interceptors
+        // Add a request interceptor
+        axios.interceptors.request.use(function (config) {
+            // Do something before request is sent
+            console.log('request config', config)
+            console.log(config.data) //对请求数据进行加密
+            return config;
+        }, function (error) {
+            // Do something with request error
+            console.log('request error', error)
+            return Promise.reject(error);
+        });
+
+        // Add a response interceptor
+        axios.interceptors.response.use(function (response) {
+            // Any status code that lie within the range of 2xx cause this function to trigger
+            // Do something with response data
+            console.log('response config', response)
+            console.log(response.data) //对响应数据进行解密
+            return response;
+        }, function (error) {
+            // Any status codes that falls outside the range of 2xx cause this function to trigger
+            // Do something with response error
+            console.log('response error', error)
+            return Promise.reject(error);
+        });
+
+        //绑定事件
+        $btn.click(function(){
+            var json = {name: '张三', age: 18 };
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:9000/all',
+                headers:{
+                    token: 'asac'
+                },
+                params: {
+                    name: '占山',
+                    age: 66
+                },
+                data: JSON.stringify(json)
+            }).then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            }).finally(response => {
+                console.log('finally')
+            });
+
+
+        })
+
+    </script>
+</body>
+</html>
