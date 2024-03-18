@@ -1,16 +1,18 @@
 # frontend-dev
-html + css + JavaScript
+web前端项目开发知识
 
 
 html标签属性参考:
 https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes
 
 
-html、css：https://www.bilibili.com/video/BV1p84y1P7Z5
-javascript：https://www.bilibili.com/video/BV1YW411T7GX
-javascript高级：https://www.bilibili.com/video/BV14s411E7qf
-
 尚硅谷前端资料下载地址：https://pan.baidu.com/s/1BM_OKMXXAGxMNqaBN_7tRg ，提取码：afyt
+
+html、css：https://www.bilibili.com/video/BV1p84y1P7Z5
+
+javascript：https://www.bilibili.com/video/BV1YW411T7GX
+
+javascript高级：https://www.bilibili.com/video/BV14s411E7qf
 
 jQuery：https://www.bilibili.com/video/BV1ts411E7ag
 

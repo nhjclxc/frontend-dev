@@ -1,0 +1,6 @@
+https://blog.csdn.net/weixin_41817034/article/details/80492315
+
+https://github.com/then/promise
+
+<script src="https://cdn.bootcdn.net/ajax/libs/es6-promise/4.2.8/es6-promise.auto.js"></script>
+
