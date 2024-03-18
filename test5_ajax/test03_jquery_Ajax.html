@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在jQuery中实现AJA发送 请求</title>
+    <script src="js/jquery-1.10.1.js"></script>
+</head>
+<body>
+    <button id="get">点击发送get请求</button>
+    <button id="post">点击发送post请求</button>
+    <button id="ajax">点击发送ajax请求</button>
+    <button id="ajax2">点击发送ajax2请求</button>
+
+    <script>
+        //获取button元素和div
+        var $get = $('#get')
+        var $post = $('#post')
+        var $ajax = $('#ajax')
+        var $ajax2 = $('#ajax2')
+
+        //绑定事件
+        $get.click(function(){
+            var param = {name: "张三", age: 18}
+            // 第一个参数时路径，第二个参数是请求参数，第三个参数是相应回调函数[响应回调函数的参数是响应体]
+            $.get('http://127.0.0.1:8000/get3', param, function(data){
+                console.log(data)
+                console.log(data.name)
+            })            
+        })
+
+        //绑定事件
+        $post.click(function(){
+            var param = {name: "张三", age: 18}
+            param = JSON.parse(JSON.stringify(param))
+            // 第一个参数时路径，第二个参数是请求参数，第三个参数是相应回调函数[响应回调函数的参数是响应体]
+            $.post('http://127.0.0.1:8000/post', param, function(data){
+                console.log(data)
+                var jsonData = JSON.parse(data)
+                console.log(jsonData)
+                console.log(jsonData.name)
+            })            
+        })
+
+        //绑定事件
+        $ajax.click(function(){
+            var param = {name: "张三", age: 18}
+            var json = JSON.parse(JSON.stringify(param))
+            console.log(json)
+            var str = JSON.stringify(json)
+            console.log(str)
+
+            $.ajax({
+                type: "POST",
+                url: "http://127.0.0.1:8000/all",
+                contentType: "application/json",
+                // 当contentType: "application/json",的时候data自能是json格式的字符串
+                data: str,
+                // "json": 返回 JSON 数据 。此时返回的数据就是json格式了
+                dataType: 'json',
+                success: function(response) {
+                    console.log(response)
+                    // 处理成功响应
+                    console.log( "处理成功响应 Data Saved: " + response );
+                },
+                error: function(xhr, status, error) {
+                    // 处理错误响应
+                    console.log(xhr)
+                    console.log( "处理错误响应 Data Saved: " + xhr );
+                    console.log( "处理错误响应 Data Saved: " + status );
+                    console.log( "处理错误响应 Data Saved: " + error );
+                }
+            });
+        })
+        //绑定事件
+        $ajax2.click(function(){
+            var param = {name: "张三", age: 18}
+            var json = JSON.parse(JSON.stringify(param))
+            console.log(json)
+            var str = JSON.stringify(json)
+            console.log(str)
+
+            $.ajax({
+                type: "POST",
+                url: "http://127.0.0.1:8000/all",
+                // contentType: "application/json",
+                // 此时参数在路径上
+                data: param,
+                success: function(response) {
+                    console.log(JSON.parse(response))
+                    // 处理成功响应
+                    console.log( "处理成功响应 Data Saved: " + response );
+                },
+                error: function(xhr, status, error) {
+                    // 处理错误响应
+                    console.log(xhr)
+                    console.log( "处理错误响应 Data Saved: " + xhr );
+                    console.log( "处理错误响应 Data Saved: " + status );
+                    console.log( "处理错误响应 Data Saved: " + error );
+                },
+                //服务端必须加上： response.setHeader('Access-Control-Allow-Headers', '*');
+                headers: {
+                    token: 'werh',
+                    cookie1: 'sadvsa'
+                }
+            });
+        })
+
+
+    </script>
+</body>
+</html>

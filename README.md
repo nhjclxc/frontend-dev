@@ -14,7 +14,7 @@ javascript高级：https://www.bilibili.com/video/BV14s411E7qf
 
 jQuery：https://www.bilibili.com/video/BV1ts411E7ag
 
-Ajax：https://www.bilibili.com/video/BV1cR4y1P7B1/、https://www.bilibili.com/video/BV1WC4y1b78y/
+Ajax：https://www.bilibili.com/video/BV1WC4y1b78y/
 
 axios：https://www.bilibili.com/video/BV1wr4y1K7tq
 
@@ -29,4 +29,6 @@ react：https://www.bilibili.com/video/BV1wy4y1D7JT
 vite：https://www.bilibili.com/video/BV1Kd4y147gg
 
 vant3：https://www.bilibili.com/video/BV1TU4y177UG
+
+Angular：https://www.bilibili.com/video/BV1bt411e71b
 

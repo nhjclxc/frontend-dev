@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX GET 请求</title>
+    <style>
+        #result{
+            width:200px;
+            height:100px;
+            border:solid 1px #90b;
+        }
+    </style>
+    <script src="js/jquery-1.10.1.js"></script>
+</head>
+<body>
+    <div id="result"></div>
+
+    <script>
+        //获取button元素和div
+        var $div = $('#result')
+
+        $div.hover(function(){
+            var xhr = new XMLHttpRequest()
+
+            xhr.open('POST', 'http://127.0.0.1:8000/post')
+            
+            // 设置请求头信息，必须在open方法后面
+            // xhr.setRequestHeader('Access-Control-Allow-Origin', '*')
+            // xhr.setRequestHeader('Content-Type', 'application/json')
+            // xhr.setRequestHeader('token', 'savsadvasvasvas')
+
+            var user = '{"name":"post","age":18,"gender":"男"}'
+            // 在send里面设置参数
+            // xhr.send()
+            xhr.send(user)
+            // xhr.send('user=xz156&age=66')
+
+            xhr.onreadystatechange = function(){
+                if (xhr.readyState === 4){
+                    if (xhr.status >= 200 && xhr.status < 300){
+                        $div.html(xhr.response)
+                        var res = JSON.parse(xhr.response)
+                        console.log(res)
+                        console.log(res.name)
+                    }
+                }
+            }
+        },function(){
+            $(this).html('')
+        })
+
+    </script>
+</body>
+</html>
