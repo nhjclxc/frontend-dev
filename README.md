@@ -26,7 +26,9 @@ Bootstrap：https://www.bilibili.com/video/BV1YW411T7yy
 
 elementUI：
 
-nodejs：https://www.bilibili.com/video/BV1a34y167AZ
+ES6-ES11：https://www.bilibili.com/video/BV1uK411H7on
+
+nodejs：https://www.bilibili.com/video/BV1a34y167AZ，https://www.npmjs.com/，链接：https://pan.baidu.com/s/1SLBluoHqhtr5r6h3Xb1Dsw，提取码：60kb
 
 vue：https://www.bilibili.com/video/BV1Zy4y1K7SH/
 
