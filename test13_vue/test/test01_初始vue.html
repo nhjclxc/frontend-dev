@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.3.4/vue.cjs.js"></script> -->
+    <script type="text/javascript" src="./js/vue.js"></script>
+
+
+</head>
+<body>
+
+    <div id="root">
+        <!-- {{}}里面写的内容必须是满足js语法，也就是js表达式，可以是一些内置对象 -->
+        你好，{{name}}，，{{Date.now()}}
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        // 创建vue实列
+        // new Vue解释一个参数，这个参数是配置对象，相当于是axios接收的那种参数
+        const vue = new Vue({
+            el: '#root',  // el表示element也就是标签元素，这句话的意思是将id=root的div与这个vue绑定
+            data: {         // 这个data就是这个vue实列要使用的那些数据，也是一个对象，里面的每一个变量都可以使用
+                            // data里面的数据供el所指定的容器使用
+                name: '世界'
+            }
+        })
+
+        // 注意：vue对象和容器是一一对应的
+
+
+
+
+    </script>
+    
+</body>
+</html>

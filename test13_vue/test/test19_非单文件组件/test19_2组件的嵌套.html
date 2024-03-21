@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test13_vue/test/test19_非单文件组件/test19_1基本使用.html</title>
+
+    <script src="../js/vue.js"></script>
+</head>
+<body>    
+    
+
+
+
+    <div id="root">
+        <!-- <app></app> -->
+        
+
+        <!-- 由于root代理的vue实列对象里面没有teacher和student，因为student和teacher是在school里面注册的，在school里面才有
+        ，所以下面的写法报错，也就是说，子组件只能在父组件里面使用，在外面用不了 -->
+        <!-- <teacher></teacher>
+        <student></student> -->
+        
+    </div>
+
+    <script>
+        Vue.config.productionTip = false    
+
+        
+        const teacher = Vue.extend({
+            name: 'teacher',
+            template: `
+            <div>
+                <h2>老师名称：{{teacherName}}</h2>
+                <h2>老师工资：{{teacherSalary}}</h2>
+            </div>`,
+            data() {
+                return {
+                    teacherName: '仓老师',
+                    teacherSalary: 8000,
+                }
+            },
+        })
+
+        const student = Vue.extend({
+            name: 'student',
+            template: `
+            <div>
+                <h2>学生名称：{{studentName}}</h2>
+                <h2>学生工资：{{studentAge}}</h2>
+            </div>`,
+            data() {
+                return {
+                    studentName: '张三',
+                    studentAge: 18,
+                }
+            },
+        })
+
+        // 子组件先注册，父组件后注册
+        const school = Vue.extend({
+            name: 'school',
+            // 下面的<teacher></teacher>和<student></student> 表示在父组件school里面使用子组件
+            template: `
+            <div>
+                <h2>学校名称：{{schoolName}}</h2>
+                <h2>学校地址：{{schoolAddr}}</h2>
+                <hr/>
+                <teacher></teacher>
+                <hr/>
+                <student></student> 
+            </div>`,
+            data() {
+                return {
+                    schoolName: '尚硅谷',
+                    schoolAddr: '北京昌平',
+                }
+            },
+            // 将学生组件和老师组件挂载在学校下面
+            components:{
+                teacher,
+                student
+            }
+        })
+
+/**
+        vm
+         ↓
+        app
+         ↓
+      school ...
+       ↶ ↷
+student    teacher ...
+**/
+        // 在实际开发中一般使用一个app组件来管理整个应用里面的所有组件，而vm只管理一个组件那就是app
+        // 创建app组件
+        const app = Vue.extend({
+            name: 'app',
+            template: `<div> <school></school> </div>`,
+            components: {
+                school
+            }
+        })
+
+        const vm = new Vue({
+            el:'#root',
+            template: `<app></app>`,
+            components: {
+                app
+            }
+        })
+
+
+
+    </script>
+    
+</body>
+</html>

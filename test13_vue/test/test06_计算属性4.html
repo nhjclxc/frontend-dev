@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.3.4/vue.cjs.js"></script> -->
+    <script type="text/javascript" src="./js/vue.js"></script>
+
+
+</head>
+<body>
+
+    <div id="root">
+        <div id="show">你好，{{fullName}}</div>
+        <input type="text" value="张" v-model="firstName">
+        <input type="text" value="三" v-model="lastName">
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        const vm = new Vue({
+            el:'#root',
+            data: {
+                firstName: '张',
+                lastName: '三'
+            },
+            // 写计算 属性 的时候vue里面的并不是一个函数，而是一个属性。
+            // 在vue内部挂载了一个属性，不是函数，注意不能出现fullName()
+            computed:{
+                // 以下是完整写法，
+                // fullName: {
+                //     get(){
+                //         return this.firstName + ' --- ' + this.lastName
+                //     },
+                //     set(){
+                //         console.log('调用set');
+                //     }
+                // }
+
+                // 简写
+                // 当你确定计算属性只需要getter的时候才可以使用简写
+                // fullName: function(){
+                //         return this.firstName + ' --- ' + this.lastName
+                // }
+                fullName(){
+                        return this.firstName + ' --- ' + this.lastName
+                }
+            }
+
+        })
+
+
+    </script>
+    
+</body>
+</html>

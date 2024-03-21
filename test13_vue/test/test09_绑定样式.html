@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test11_vue/test/test09_绑定样式.html</title>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.3.4/vue.cjs.js"></script> -->
+    <script type="text/javascript" src="./js/vue.js"></script>
+
+    <!--vue官网样式 https://v2.cn.vuejs.org/v2/guide/class-and-style.html -->
+    <style>
+        .basic{
+            width: 400px;
+            height: 100px;
+            border: 1px solid black;
+        }
+        
+        .happy{
+            border: 4px solid red;;
+            background-color: rgba(255, 255, 0, 0.644);
+            background: linear-gradient(30deg,yellow,pink,orange,yellow);
+        }
+        .sad{
+            border: 4px dashed rgb(2, 197, 2);
+            background-color: gray;
+        }
+        .normal{
+            background-color: skyblue;
+        }
+
+        .atguigu1{
+            background-color: yellowgreen;
+        }
+        .atguigu2{
+            font-size: 30px;
+            text-shadow:2px 2px 10px red;
+        }
+        .atguigu3{
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="root">
+        <!-- 不会变的属性类名写在class里面，会变的属性类名写在v-bind:class里面 -->
+        <!-- 如果有出现:class，那么vue会将class里面的值和:class里面的值合并到class里面在用于浏览器解析-->
+        <!-- 注意这个是一种字符串方法，这个方法只能绑定修改一个样式 -->
+        <div class="basic" :class="mood" @click="changeMood">我是 {{name}}</div> <br><br>
+
+        <!-- 下面:class里面绑定的是一个数组，将可能会用到的类属性全部放在一个数组里面，后续通过vue来修改数组，达到修改样式 -->
+        <!-- 要绑定的样式格式和名字都不确定 -->
+        <div class="basic" :class="arr" @click="changeMood2">我是 {{name}}</div> <br><br>
+
+        <!-- 样式对象写法，，，要绑定的样式格式和名字都确定有哪些，但是不知道用哪些 -->
+        <div class="basic" :class="classObj" >我是 {{name}}</div> <br><br>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+        
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                name: "张三",
+                mood: 'happy',
+                arr: ['atguigu1', 'atguigu2','atguigu3'],
+                classObj:{
+                    atguigu1: true,
+                    atguigu2: true
+                }
+            },
+            methods: {
+                changeMood(){
+                    switch(this.mood) {
+                        case 'basic':
+                            this.mood = 'happy'
+                            break;
+                        case 'happy':
+                            this.mood = 'sad'
+                            break;
+                        case 'sad':
+                            this.mood = 'normal'
+                            break;
+                        case 'normal':
+                            this.mood = 'basic'
+                            break;
+                    } 
+                },
+                changeMood2(){
+                    let index = Math.floor(Math.random()*this.arr.length)
+                    arr.splice(index, 1)
+                }
+            },
+        })
+
+    </script>
+    
+</body>
+</html>

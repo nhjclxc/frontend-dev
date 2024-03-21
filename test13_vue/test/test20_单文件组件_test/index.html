@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习单文件组件文件的组织方式</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(213, 241, 241);
+        }
+    </style>
+</head>
+<body>
+    <!--第一步： 创建一个vm对应的div -->
+    <div id="root">
+        <!--第四步： 使用App组件 -->
+        <!-- <App>ddd</App> -->
+    </div>
+
+    <!--第二步： 引入vue.js -->
+    <script type="text/javacsript"  src="../js/vue.js"></script>
+    <!--第三步： 引入main.js -->
+    <script type="text/javascript" src="./main.js"></script>
+
+<!-- 
+    所有文件解析：index.html、main.js、App.vue、School.vue、Student.vue
+        
+        index.html：用于向外暴露一个访问的html文件，并且将vue实列对应使用起来
+        main.js：创建一个vue实列对应，添加App组件，main.js是vue项目的入口文件
+        App.vue：管理整个应用的所有vue组件
+        School.vue：一个vue组件，里面包含整个组件的骨架html、表现css和行为js
+        Student.vue：一个vue组件，里面包含整个组件的骨架html、表现css和行为js
+ -->
+
+</body>
+</html>

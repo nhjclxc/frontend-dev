@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+
+    <div id="box1">
+        <!--插值语法就是使用{{}}  -->
+        插值语法，{{name}}
+        <hr>
+        
+        https://v2.cn.vuejs.org/v2/api/?#%E6%8C%87%E4%BB%A4
+        指令语法，
+        <!-- 指令语法就是使用vue提供的指令来执行js代码 -->
+        <!-- <a href="http://www.baidu.com">点我去百度</a> -->
+        <a href="url">点我去百度 1</a>
+        <!-- 使用指令语法 v-v-bind:，v表示的是vue，bind表示的是绑定。也就是想让某个东西去绑定vue -->
+        <a v-bind:href="url">点我去百度 2</a>
+        <!-- v-bind: 可以简写为 : ，注意只有v-bind可以简写为:，其他的v-xxx不能-->
+        <a :href="url">点我去百度 3</a>
+        <!-- <a href="http://www.baidu.com">点我去百度</a> -->
+    
+        <hr> 
+        注意插值语法用于在标签体里面使用，innerHtml
+        而指令语法用于语法解析标签，attr
+
+        <hr>
+        <!-- 注意：{{}}只能看到vue配置data里面直接的孩子属性，内层的属性看不到，要是有out.in.in2这种语法取出内部数据 -->
+        读取data内部数据：{{person.name}}，{{person.age}}
+    </div>
+
+    <script type="text/javascript">
+        new Vue({
+            el: '#box1',
+            data:{
+                name: '张三',
+                url: 'http://www.baidu.com',
+                person: {
+                    name: '内部张三',
+                    age: 18
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>

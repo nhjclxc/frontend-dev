@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test13_vue/test/test19_非单文件组件/test19_1基本使用.html</title>
+
+    <script src="../js/vue.js"></script>
+</head>
+<body>    
+    
+    <!-- 非单文件组件，一个html文件里面可能存在多个组件 -->
+
+
+    <div id="root">
+        <!-- 第三步：使用组件，使用组件标签，标签名字就是你在vue实列上面注册的名字 -->
+        <school></school>
+        <hr>
+        <!-- 第三步：使用组件 -->
+        <student></student>
+        <!-- 复用组件 -->
+        <student></student>
+
+        <hello></hello>
+        <hr>
+        <hello />
+    </div>
+
+    <script>
+        Vue.config.productionTip = false    
+        
+        // vue组件编程分为3步
+        // 第一步：创建组件
+        // 第二步：注册组件
+        // 第三步：使用组件
+
+        // 第一步：创建组件
+        // 创建一个学校组件
+        const school22 = Vue.extend({
+            // template用于定义组件的骨架
+            template:`
+            <div>
+                <h2>学校名称：{{schoolName}}</h2>
+                <h2>学校地址：{{schoolAddr}}</h2>
+            </div>`,
+            // el: 'root' //注意el配置不能写在组件上，只能写在vue的实列对象上面 option "el" can only be used during instance creation with the `new` keyword.
+            // 注意主键的data必须写成函数形式，看 【test13_vue\代码\vue_basic\04_el与data的两种写法\el与data的两种写法.html】
+            // 因为组件可能被复用，当被复用的时候，如果还是对象形式的话，那么data指示的数据在内存中就只有一份了，修改的话每一个复用的人的数据都会被改变
+            // 而data使用函数形式，在返回的时候会创建一个新的对象，那么每一个复用组件的人拿到的数据都是独一份
+            data() {
+                // 使用return语句返回一个全新的对象数据，那么每一次复用就会在堆区开辟一块新内存用于这个组件使用
+                return {
+                    schoolName: '尚硅谷',
+                    schoolAddr: '北京'
+                }
+            },
+        })
+
+        // 创建一个学生组件
+        const student = Vue.extend({
+            // template用于定义组件的骨架
+            template:`
+            <div>
+                <h2>学生姓名：{{studentName}}</h2>
+                <h2>学生年龄：{{studentAge}}</h2>
+            </div>`,
+            data() {
+                return {
+                    studentName: '张三',
+                    studentAge: 28
+                }
+            },
+        })
+        
+        // 注意：全局注册的组件必须要在所有的vue实列对象创建之前注册
+        // 以下演示全局注册组件
+          // 先创建一个Hello组件
+          const hello = Vue.extend({
+            // template用于定义组件的骨架
+            template:`
+            <div>
+                <h2>你好世界：{{name}}</h2>
+            </div>`,
+            data() {
+                return {
+                    name: 'Jack'
+                }
+            },
+        })
+
+        // 全局注册hello组件
+        // 第一个参数是注册组件的名称，第二个参数是这个组件对象
+        Vue.component('hello', hello)
+
+
+
+        // 第二步：注册组件
+        const vm = new Vue({
+            el:'#root',
+            // 注册组件（局部注册）
+            components:{
+                // 前面的school是school22在vue实列对象下的组件名称
+                school: school22,
+                // 如果Vue.extend定义的变量名称和组件名称相同那么可以直接放进来
+                student
+            }
+        })
+
+
+
+
+    </script>
+    
+</body>
+</html>

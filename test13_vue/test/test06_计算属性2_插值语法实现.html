@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.3.4/vue.cjs.js"></script> -->
+    <script type="text/javascript" src="./js/vue.js"></script>
+
+
+</head>
+<body>
+
+    <div id="root">
+        <div id="show">你好，{{firstName}} --- {{lastName}}</div>
+        <input type="text" v-model:value="firstName">
+        <input type="text" v-model="lastName">
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                firstName : '张',
+                lastName : '三',
+            }
+        })
+
+
+
+    </script>
+    
+</body>
+</html>

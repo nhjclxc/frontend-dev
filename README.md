@@ -30,14 +30,15 @@ ES6-ES11：https://www.bilibili.com/video/BV1uK411H7on
 
 nodejs：https://www.bilibili.com/video/BV1a34y167AZ，https://www.npmjs.com/，链接：https://pan.baidu.com/s/1SLBluoHqhtr5r6h3Xb1Dsw，提取码：60kb
 
-vue：https://www.bilibili.com/video/BV1Zy4y1K7SH/
+Angular：https://www.bilibili.com/video/BV1ts411E7qg、https://www.bilibili.com/video/BV1bt411e71b
 
 react：https://www.bilibili.com/video/BV1wy4y1D7JT
+
+vue：https://www.bilibili.com/video/BV1Zy4y1K7SH/，https://cn.vuejs.org/，https://v2.cn.vuejs.org/v2/guide/installation.html，https://devtools-next.vuejs.org，https://play.vuejs.org/
 
 vite：https://www.bilibili.com/video/BV1Kd4y147gg
 
 vant3：https://www.bilibili.com/video/BV1TU4y177UG
 
-Angular：https://www.bilibili.com/video/BV1bt411e71b
 
 项目实战：https://www.bilibili.com/video/BV1Vf4y1T7bw、https://www.bilibili.com/video/BV1x64y1S7S7

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>test13_vue/test/test13_列表排序.html</title>
+		<script type="text/javascript" src="./js/vue.js"></script>
+	</head>
+	<body>
+		<!-- 准备好一个容器-->
+		<div id="root">
+			<h2>人员列表</h2>
+			<input type="text" placeholder="请输入名字" v-model="keyWord">
+			<button @click="flag=2">年龄升序</button>
+			<button @click="flag=1">年龄降序</button>
+			<button @click="flag=0">恢复原顺序</button>
+			<ul>
+				<li v-for="(p,index) of filPerons" :key="index">
+					{{p.name}}-{{p.age}}-{{p.sex}}
+				</li>
+			</ul>
+		</div>
+
+		<script type="text/javascript">
+			Vue.config.productionTip = false
+			
+			new Vue({
+				el:'#root',
+				data:{
+					flag: 0,
+					keyWord:'',
+					persons:[
+						{id:'001',name:'马冬梅',age:19,sex:'女'},
+						{id:'002',name:'周冬雨',age:22,sex:'女'},
+						{id:'003',name:'周杰伦',age:21,sex:'男'},
+						{id:'004',name:'温兆伦',age:25,sex:'男'}
+					]
+				},
+				computed:{
+					filPerons(){
+						var arr = this.persons.filter((p) => {
+							return p.name.indexOf(this.keyWord) !== -1
+						})
+						if (this.flag){
+							arr.sort((p1, p2) => {
+							// if(this.flag === 2){
+							// 	return p1.age - p2.age
+							// }else if (this.flag === 1){
+							// 	return p2.age - p1.age
+							// }
+							return this.flag === 2 ? p1.age - p2.age : p2.age - p1.age
+						})
+						}
+						return arr
+					}
+				}
+			})
+			
+		</script>
+</html>

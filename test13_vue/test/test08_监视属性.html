@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test11_vue/test/test08_监视属性.html</title>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.3.4/vue.cjs.js"></script> -->
+    <script type="text/javascript" src="./js/vue.js"></script>
+
+
+</head>
+<body>
+
+    <div id="root">
+        <span>今天天气很 {{tianqi}}</span>
+        <hr>
+        <button id="btn" @click="change()">点我切换天气</button>
+
+        <button id="btn" @click="isHot = !isHot">点我切换天气22</button>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        const vm = new Vue({
+            el:'#root',
+            data: {
+                isHot: true
+            },
+            methods: {
+                change(){
+                    this.isHot = !this.isHot
+
+                    // 下面是使用tianqi的set方法
+                    // this.tianqi = !this.isHot
+                }
+            },
+            computed:{
+                tianqi: {
+                    get(){
+                        return this.isHot ? '热~~~~~' : '冷!!!!!'
+                    },
+                    // set(value){
+                    //     this.isHot = value 
+                    // }
+                }
+            }
+            
+            // 监视属性
+            ,watch:{
+                //配置要监视的参数，这个操作类似于属性计算
+                isHot:{
+                    // 当被监视的变量isHot被修改时，这个handler会被回调
+                    handler(newValue, oldValue){
+                        console.log('isHot被修改', newValue, oldValue);
+                    }
+                }
+
+            }
+        })
+
+        vm.$watch('tianqi', {
+            handler(newValue, oldValue){
+                console.log('tainqi被修改', newValue, oldValue);
+            }
+        })
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.3.4/vue.cjs.js"></script> -->
+    <script type="text/javascript" src="./js/vue.js"></script>
+
+
+</head>
+<body>
+
+    <div id="root">
+        <span>今天天气很 {{tianqi}}</span>
+        <hr>
+        <button id="btn" @click="change()">点我切换天气</button>
+
+        // 当vue里面的method里面写的方法很短时可以简写
+        <button id="btn" @click="isHot = !isHot">点我切换天气22</button>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        const vm = new Vue({
+            el:'#root',
+            data: {
+                isHot: true
+            },
+            methods: {
+                change(){
+                    this.isHot = !this.isHot
+
+                    // 下面是使用tianqi的set方法
+                    // this.tianqi = !this.isHot
+                }
+            },
+            computed:{
+                tianqi: {
+                    get(){
+                        return this.isHot ? '热~~~~~' : '冷!!!!!'
+                    },
+                    // set(value){
+                    //     this.isHot = value 
+                    // }
+                }
+            }
+
+        })
+
+
+    </script>
+    
+</body>
+</html>

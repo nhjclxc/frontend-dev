@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>test13_vue/test/test11_列表渲染.html</title>
+		<script type="text/javascript" src="./js/vue.js"></script>
+	</head>
+	<body>
+		<!-- https://v2.cn.vuejs.org/v2/guide/list.html -->
+		
+		<!-- 准备好一个容器-->
+		<div id="root">
+
+			<h2>人员列表</h2>
+			<ul>
+				<!-- 使用v-for指令进行数据遍历，类似于for-each遍历语法 -->
+
+				<!-- 标签属性key -->
+				<!-- https://v2.cn.vuejs.org/v2/api/#key -->
+				<!-- 使用了v-for的标签都要使用一个:key来标识每一条数据的唯一性，方便后续的写操作 -->
+				<li v-for="person in personList" :key="person.id">
+					{{person.id}} -- {{person.name}} - {{person.age}}
+				</li>
+
+				<li v-for="(person, index) in personList" :key="index">
+					{{person}} --- {{index}}
+				</li>
+			</ul>
+			
+			<h2>遍历对象</h2>
+			<ul>
+				<li v-for="p1 in p">
+					{{p1}}
+				</li>
+				<li v-for="(value, key) in p" :key="key">
+					{{key}} - {{value}}
+				</li>
+			</ul>
+
+
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		Vue.config.productionTip = false
+
+		const vm = new Vue({
+			el:'#root',
+			data:{
+				personList:[
+					{id:'001', name:'张三1', age: 18},
+					{id:'002', name:'张三2', age: 19},
+					{id:'003', name:'张三3', age: 13}
+				],
+				p:{id:'003', name:'张三3', age: 13}
+			}
+		})
+	</script>
+</html>
