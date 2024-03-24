@@ -8,7 +8,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes
 
 尚硅谷前端资料下载地址：https://pan.baidu.com/s/1BM_OKMXXAGxMNqaBN_7tRg ，提取码：afyt
 
-html、css：https://www.bilibili.com/video/BV1p84y1P7Z5
+html、css：https://www.bilibili.com/video/BV1p84y1P7Z5、https://www.bilibili.com/video/BV14J4114768/
 
 javascript：https://www.bilibili.com/video/BV1YW411T7GX
 
@@ -22,7 +22,9 @@ axios：https://www.bilibili.com/video/BV1wr4y1K7tq
 
 promise：https://www.bilibili.com/video/BV1GA411x7z1
 
-Bootstrap：https://www.bilibili.com/video/BV1YW411T7yy
+Bootstrap：https://www.bilibili.com/video/BV1R7411s72K/、https://www.bilibili.com/video/BV1YW411T7yy
+
+Webpack5：https://www.bilibili.com/video/BV1e7411j7T5、https://www.bilibili.com/video/BV14T4y1z7sw
 
 elementUI：https://www.bilibili.com/video/BV1x64y1S7S7、https://www.bilibili.com/video/BV1Zy4y1K7SH?p=134、https://www.bilibili.com/video/BV1Zy4y1K7SH?p=135
 
@@ -38,7 +40,9 @@ vue：https://www.bilibili.com/video/BV1Zy4y1K7SH/，https://cn.vuejs.org/，htt
 
 vite：https://www.bilibili.com/video/BV1Kd4y147gg
 
-vant3：https://www.bilibili.com/video/BV1TU4y177UG
+vant3：https://www.bilibili.com/video/BV1TU4y177UG’
+
+移动端：https://www.bilibili.com/video/BV14J4114768/
 
 
 项目实战：https://www.bilibili.com/video/BV1Vf4y1T7bw、https://www.bilibili.com/video/BV1x64y1S7S7
