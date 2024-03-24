@@ -24,7 +24,7 @@ promise：https://www.bilibili.com/video/BV1GA411x7z1
 
 Bootstrap：https://www.bilibili.com/video/BV1YW411T7yy
 
-elementUI：
+elementUI：https://www.bilibili.com/video/BV1x64y1S7S7、https://www.bilibili.com/video/BV1Zy4y1K7SH?p=134、https://www.bilibili.com/video/BV1Zy4y1K7SH?p=135
 
 ES6-ES11：https://www.bilibili.com/video/BV1uK411H7on
 
