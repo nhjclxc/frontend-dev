@@ -2,7 +2,7 @@
     <div>
     <div class="row">
       <div class="col-xs-offset-2 col-xs-8">
-        <PageHeader />
+        <div class="page-header"><h2>Vue Router Demo</h2></div>
       </div>
     </div>
     <div class="row">
@@ -31,10 +31,11 @@
 
 <script>
 
-    import PageHeader from './components/PageHeader.vue'
+    // import About from './components/About.vue'
+    // import Home from './components/Home.vue'
 
     export default {
         name: 'App',
-        components: {PageHeader},
+        // components: {About, Home },
     }
 </script>
