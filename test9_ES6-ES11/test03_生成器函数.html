@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 生成器函数定义 Generator 
+        function* gen() {
+            console.log('gen 1');
+            // 使用yield关键字来控制是否发送异步
+            let res1 = yield '返回666'
+            console.log('gen 2', res1);
+            let res2 = yield '返回888'
+            console.log('gen 3', res2);
+        }
+
+        // 注意：要是有一个异步函数，必须使用"异步函数名()"的形式获得一个异步函数，不然每一次调用的异步函数名()都是一个全新的异步函数
+        const myGen = gen()
+        console.log('gen ', myGen);
+        // 使用next方法来是异步函数进行下一次调用，Generator 内部由一个迭代器对象
+        let val = myGen.next('参数1')
+        console.log('val', val);
+        // next函数的参数可以作为每一个yield语句的返回值来传入异步函数
+        console.log('val', myGen.next('参数2'));
+        console.log('val', myGen.next('参数3'));
+
+
+        console.log('---------------------------');
+
+        // 使用异步编程完成测试案例
+        // 1s后控制台输出 111，2s后控制台输出 222，3s后控制台输出 333
+        function* consoleOut() {
+            for (let i = 1; i < 10; i++) {
+                yield i * 100 + i * 10 + i
+            }
+        }
+
+        // 获异步函数
+        const asyncFun = consoleOut()
+        // console.log('res = ', asyncFun.next());
+
+        // setInterval(() => {
+        //     console.log('asyncFun', asyncFun.next().value);
+        // }, 1000);
+
+
+        console.log('============================');
+
+        // 使用异步任务，按顺序读取：用户数据、订单数据、商品数据
+        function getUser() {
+            // 使用setTimeout模拟进行请求
+            setTimeout(() => {
+                console.log('获取用户数据结束');
+                // 获取用户数据结束后，去获取用户对应的订单数据
+                // 这里就可以使用异步函数进行调用了
+                gen2.next('用户数据')
+            }, 1000);
+        }
+
+        function getOrder(users) {
+            setTimeout(() => {
+                console.log('得到的用户数据 = ', users);
+                console.log('获取订单数据结束');
+                gen2.next('订单数据')
+            }, 1000);
+        }
+
+        function getGoods(orders) {
+            setTimeout(() => {
+                console.log('得到的订单 数据 = ', orders);
+                console.log('获取商品数据结束');
+                gen2.next('商品数据')
+            }, 1000);
+        }
+
+        function dealGoods(goods) {
+            console.log('最后---处理商品数据', goods);
+        }
+
+        function* generator() {
+            console.log('开始获取');
+            // 第一次调用去获取用户数据
+            let users = yield getUser()
+            // console.log('users = ', users);
+            let orders = yield getOrder(users)
+            let goods = yield getGoods(orders)
+            dealGoods(goods)
+        }
+
+
+        const gen2 = generator()
+        gen2.next()
+    </script>
+</body>
+
+</html>

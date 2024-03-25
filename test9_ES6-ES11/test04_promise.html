@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 使用异步任务，按顺序读取：用户数据、订单数据、商品数据
+
+        const p = new Promise(function (resolve, reject) {
+            // console.log('ss');
+            setTimeout(() => {
+                resolve('用户数据获取成功啦')
+            }, 1000);
+        })
+        console.log('p ', p);
+
+        // Promise对象支持链式调用
+        p.then(function (value) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(() => {
+                    resolve(value + '----订单数据获取成功啦')
+                }, 1000);
+            })
+        }, function (error) {
+            console.log('error----订单数据');
+        }).then(function (value) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(() => {
+                    var data = value + '++++++++商品数据获取成功啦'
+                    console.log('data', data);
+                    resolve(data)
+                }, 1000);
+            })
+        }, function (error) {
+            console.log('error++++++++商品数据');
+        })
+
+        console.log('p.data', p);
+    </script>
+</body>
+
+</html>

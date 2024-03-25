@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        const arr = ['z', 'x', 'c', 'v', 'b']
+
+        // 使用迭代器对数据进行遍历
+        for (const a of arr) {
+            console.log('a = ', a);
+        }
+
+        const arr2 = ['z', 'x', 'c', 'v', 'b']
+        // 使用迭代器的next方法进行遍历
+        let iterator = arr[Symbol.iterator]() // arr[Symbol.iterator]得到的是一个属性，后面加一个()转化为函数
+        // {value: 'z', done: false},done表示迭代是否完成
+        // console.log('iterator.next()',iterator.next());
+        do {
+            var next = iterator.next()
+            console.log('next', next.value);
+        }while(!next.done)
+
+        
+
+        // 使用迭代器遍历自定义数据
+        const myClass = {
+            name: '测试一班',
+            stus: [
+                '张三','里斯','王五','赵六','老八'
+            ],
+            // Uncaught TypeError: myClass is not iterable 
+            // 不是一个可以迭代的对象，所以要定义一个可以使用迭代器的对象
+            [Symbol.iterator](){
+                    let _this = this;
+                    let index = 0;
+                // Uncaught TypeError: Result of the Symbol.iterator method is not an object，
+                // 返回的不是一个对象，所以要返回一个对象
+                return {
+                    // Uncaught TypeError: undefined is not a function
+                    // 返回对象里面不是一个函数，所以要返回一个next函数对象
+                    next: function(){ // 也可以写成箭头函数
+                        // Uncaught TypeError: Iterator result undefined is not an object
+                        // 迭代器的返回对象不是一个拥有value和done属性的对象
+                        if (index < _this.stus.length){
+                            let res = {value: _this.stus[index], done: false}
+                            index++
+                            return res
+                        }
+                       return {value: undefined, done: true}
+                    }
+                }
+            }
+        }
+
+        for (const s of myClass) {
+            console.log('自定义对象遍历 ', s);
+        }
+
+
+
+
+    </script>
+</body>
+</html>

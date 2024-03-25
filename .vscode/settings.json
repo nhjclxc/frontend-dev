@@ -1,3 +1,5 @@
 {
-    "commentTranslate.targetLanguage": "zh-CN"
+    "commentTranslate.targetLanguage": "en",
+    "commentTranslate.hover.enabled": true,
+    "commentTranslate.source": "Bing"
 }
