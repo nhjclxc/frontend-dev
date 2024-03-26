@@ -44,5 +44,8 @@ vant3：https://www.bilibili.com/video/BV1TU4y177UG’
 
 移动端：https://www.bilibili.com/video/BV14J4114768/
 
+微信小程序：https://www.bilibili.com/video/BV1834y1676P、https://www.bilibili.com/video/BV1LF4m1E7kB/
+
+图表、大屏实用库：https://echarts.apache.org/zh/index.html
 
 项目实战：https://www.bilibili.com/video/BV1Vf4y1T7bw、https://www.bilibili.com/video/BV1x64y1S7S7
